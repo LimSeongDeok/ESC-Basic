@@ -181,12 +181,13 @@ public class MainActivity extends AppCompatActivity {
     private void findPhone() {
         String  find = phoneNum.getText().toString().replaceAll("-", "");
         String plusname = "";
-        for (int i = 0; i < DummyData.contacts.size(); i++) {
-            if(DummyData.contacts.get(i).getPhone().replaceAll("-", "").contains(find)){
-                // name.setText(DummyData.contacts.get(i).getName());
-                plusname += " " + DummyData.contacts.get(i).getName();
-            } else {
-                plusname = plusname;
+        if(phoneNum.length() == 0) {
+            name.setText(plusname);
+        }else{
+            for (int i = 0; i < DummyData.contacts.size(); i++) {
+                if (DummyData.contacts.get(i).getPhone().replaceAll("-", "").contains(find)) {
+                    plusname += " " + DummyData.contacts.get(i).getName();
+                }
             }
         }
         name.setText(plusname);
